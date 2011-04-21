@@ -1,0 +1,11 @@
+PROJECT(syncTest)
+
+FIND_PACKAGE(VTK REQUIRED)
+IF(NOT VTK_USE_RENDERING)
+	Message("This is not going to work without VTK_USE_RENDERING")
+ENDIF(NOT VTK_USE_RENDERING)
+INCLUDE(${VTK_USE_FILE})
+
+ADD_EXECUTABLE(syncTest syncTest.cxx)
+TARGET_LINK_LIBRARIES(syncTest vtkRendering)
+TARGET_LINK_LIBRARIES(syncTest vtkHybrid)
